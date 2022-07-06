@@ -1,0 +1,69 @@
+version: "2"
+
+services:
+  nginx:
+    build: ./nginx
+    image: scrttestnet/nginx
+    env_file:
+      - ./config.env
+    volumes:
+      - nginx_conf:/etc/nginx/sites
+      - letsencrypt_certs:/etc/letsencrypt
+      - certbot_acme_challenge:/var/www/certbot
+      - ./vhosts:/etc/nginx/vhosts
+      - ./html:/var/www/html
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    depends_on:
+      - "localsecret"
+
+  localsecret:
+    container_name: localsecret
+    hostname: localsecret
+    image: ghcr.io/scrtlabs/localsecret
+    ports:
+      - '9090:9090'
+      - '9091:9091'
+      - '26657:26657'
+      - '1317:1317'
+      - '5000:5000'
+    environment:
+      - TZ=`ls -la /etc/localtime | cut -d/ -f8-9
+    restart: on-failure
+  explorer:
+    container_name: explorer
+    hostname: explorer
+    image: taariq/pingpub-explorer
+    ports:
+      - '80'
+    environment:
+      - TZ=`ls -la /etc/localtime | cut -d/ -f8-9
+    restart: on-failure
+
+  certbot:
+    build: ./certbot
+    image: scrttestnet/certbot
+    env_file:
+      - ./config.env
+    volumes:
+      - letsencrypt_certs:/etc/letsencrypt
+      - certbot_acme_challenge:/var/www/certbot
+
+  cron:
+    build: ./cron
+    image: scrttestnet/cron
+    environment:
+      COMPOSE_PROJECT_NAME: "${COMPOSE_PROJECT_NAME}"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./:/workdir:ro
+    restart: unless-stopped
+
+volumes:
+  nginx_conf:
+    external: true
+  letsencrypt_certs:
+    external: true
+  certbot_acme_challenge:
