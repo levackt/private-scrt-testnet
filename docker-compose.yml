@@ -32,6 +32,8 @@ services:
     environment:
       - TZ=`ls -la /etc/localtime | cut -d/ -f8-9
     restart: on-failure
+    volumes:
+      - scrttestnet:~/.secretd/
 
   localsecretui:
     image: scrttestnet/localsecretui
@@ -71,6 +73,8 @@ services:
     restart: unless-stopped
 
 volumes:
+  scrttestnet:
+    external: true
   nginx_conf:
     external: true
   letsencrypt_certs:
