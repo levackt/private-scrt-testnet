@@ -98,6 +98,7 @@
 }
 .error {
   color: red;
+  padding-top: 10px;
 }
 body {
   line-height: 1;
@@ -205,7 +206,7 @@ a:hover {
   --danger: #ff1a1a;
   --danger-bc: #d10000;
 }
-.faucet {
+.faucet, .keplr {
   max-width: 40rem;
   width: 100%;
   margin: 0 auto;
@@ -241,10 +242,20 @@ a:hover {
     margin: 1rem;
   }
 }
-.faucetCard {
+.faucetCard, .keplrCard {
   margin-bottom: 30px;
   background: #9094c9;
 }
 label {
   margin-top: 20px;
+}
+.keplrConnect {
+  width: 100px;
+  height: 90px;
+  padding: 20px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }

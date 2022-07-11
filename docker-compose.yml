@@ -32,6 +32,15 @@ services:
     environment:
       - TZ=`ls -la /etc/localtime | cut -d/ -f8-9
     restart: on-failure
+
+  localsecretui:
+    image: scrttestnet/localsecretui
+    build: ./localsecret-ui
+    hostname: localsecretui
+    ports:
+      - '3000:3000'
+    restart: on-failure
+
   explorer:
     container_name: explorer
     hostname: explorer

@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar";
 
 const Faucet = lazy(() => import("./components/Faucet"));
 const Home = lazy(() => import("./components/Home"));
+const KeplrConnect = lazy(() => import("./components/KeplrConnect"));
 
 function App() {
   
@@ -20,6 +21,9 @@ function App() {
             </Route>
             <Route path="/faucet" element={<Faucet />}>
               Faucet
+            </Route>
+            <Route path="/keplr" element={<KeplrConnect />}>
+              Connect Keplr
             </Route>
           </Routes>
         </Suspense>

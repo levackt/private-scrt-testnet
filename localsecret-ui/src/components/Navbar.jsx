@@ -6,6 +6,7 @@ function Navbar() {
     <div className="Navbar">
       <Link href="/">Home</Link>
       <Link href="/faucet">Faucet</Link>
+      <Link href="/keplr">Keplr Connect</Link>
       {/* todo get the URL from env or config */}
       <Link
         icon
@@ -15,7 +16,6 @@ function Navbar() {
       >
         Explorer
       </Link>
-      {/* <Link href="/keplr">Connect Keplr</Link> */}
     </div>
   );
 }

@@ -9,11 +9,6 @@ import 'react-toastify/dist/ReactToastify.css';
 
 export default function Faucet() {
 
-  
-  console.log(`FAUCET_SERVER=${FAUCET_SERVER}`);
-  console.log(`MINIMAL_DENOM=${DENOM}`);
-  console.log(`AMOUNT_GIVEN=${AMOUNT_GIVEN}`);
-
   const [ loading, setLoading ] = React.useState(false);
 
   const { register, handleSubmit, formState: { errors, dirtyFields } } = useForm({
@@ -25,13 +20,13 @@ export default function Faucet() {
 
   const onSubmit = data => {
     setLoading(true);
-    console.log(`on submit FAUCET_SERVER=${FAUCET_SERVER}`);
 
     const faucetPromise = new Promise((resolve) =>
       axios.get(`${FAUCET_SERVER}/faucet?address=${data.address}`)
         .then((response) => setTimeout(() => resolve(response), 3000))
         .catch((err) => {
           console.error("Faucet failed", err);
+          toast.error(`Faucet error: ${err.message}`);
        })
     );
 
