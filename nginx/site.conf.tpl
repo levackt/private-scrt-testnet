@@ -30,6 +30,6 @@ server {
 server {
     listen 9090 http2;
     server_name ${domain} www.${domain};
-    access_log syslog:server=127.0.0.1:12000,tag=amplify,severity=info main_ext;
+    access_log syslog:server=127.0.0.1:12000,tag=amplify,severity=info;
     include /etc/nginx/vhosts/${domain}.conf;
 }
