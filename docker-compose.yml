@@ -22,7 +22,7 @@ services:
   localsecret:
     container_name: localsecret
     hostname: localsecret
-    image: ghcr.io/scrtlabs/localsecret
+    image: ghcr.io/scrtlabs/localsecret:v1.4.0-cw-v1-beta.2
     ports:
       - '9090:9090'
       - '9091:9091'

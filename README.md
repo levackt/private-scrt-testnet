@@ -15,16 +15,17 @@
 - [Adding a new domain to a running solution](#add-domain)
   - [Step 0 - Create new DNS records](#new-dns)
   - [Step 1 - Add domain name and email to the configuration](#add-domain-config)
-  - [Step 2 - Configure a new Nginx virtual hosts](#new-vhost)
+  - [Step 2 - Configure a new Nginx virtual host](#new-vhost)
   - [Step 3 - Restart Docker containers](#restart-docker)
 - [Directory structure](#dir-structure)
 - [Configuration file structure](#config-file)
 - [SSL configuration for A+ rating](#ssl-config)
 
 - Usage
-  - Connect Keplr
-  - Local faucet
-  - Explorer
+  - [Explorer](#explorer)
+  - [Connect Keplr](#keplr)
+  - [Faucet](#faucet)
+
 
 ## <a id="overview"></a>Overview
   
@@ -347,3 +348,7 @@ Read more about the best practices and rating:
 - https://github.com/ssllabs/research/wiki/SSL-and-TLS-Deployment-Best-Practices
 - https://github.com/ssllabs/research/wiki/SSL-Server-Rating-Guide
 
+## <a id="usage"></a>Usage
+### <a id="explorer"></a>Explorer
+### <a id="keplr"></a>Keplr
+### <a id="faucet"></a>Faucet
