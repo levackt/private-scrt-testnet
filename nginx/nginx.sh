@@ -40,7 +40,8 @@ if [ ! -f /etc/nginx/sites/ssl/ssl-dhparams.pem ]; then
   openssl dhparam -out /etc/nginx/sites/ssl/ssl-dhparams.pem 2048
 fi
 
-for domain in $DOMAINS; do
+upquoted_domains=$(echo $DOMAINS | sed  's/"//g')
+for domain in $upquoted_domains; do
   echo "Checking configuration for $domain"
 
   if [ ! -f "/etc/nginx/sites/$domain.conf" ]; then

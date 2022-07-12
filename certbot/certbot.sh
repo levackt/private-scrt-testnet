@@ -18,7 +18,8 @@ if [ "$CERTBOT_TEST_CERT" != "0" ]; then
   test_cert_arg="--test-cert"
 fi
 
-domain_list=($DOMAINS)
+upquoted_domains=$(echo $DOMAINS | sed  's/"//g')
+domain_list=($upquoted_domains)
 emails_list=($CERTBOT_EMAILS)
 for i in "${!domain_list[@]}"; do
   domain="${domain_list[i]}"
