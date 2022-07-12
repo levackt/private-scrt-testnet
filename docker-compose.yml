@@ -33,7 +33,7 @@ services:
       - TZ=`ls -la /etc/localtime | cut -d/ -f8-9
     restart: on-failure
     volumes:
-      - scrttestnet:~/.secretd/
+      - scrttestnet:/root/.secretd/
 
   localsecretui:
     image: scrttestnet/localsecretui
