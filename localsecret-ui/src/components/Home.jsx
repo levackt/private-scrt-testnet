@@ -1,4 +1,5 @@
-import { Container, Card, Link, Row, Text } from "@nextui-org/react";
+import { Container, Card, Link, Row, Text, Spacer } from "@nextui-org/react";
+import { EXPLORER_URL } from "../constants/constants";
 
 export default function Home() {
   return (
@@ -18,8 +19,36 @@ export default function Home() {
             </Row>
 
               <Text justify="left" align="left">
-                This project extends LocalSecret to a wider audience; your team, testers, stakeholders etc
+                This project extends LocalSecret to a wider audience; dev team, testers, users, etc
               </Text>
+              <Spacer/>
+
+              <section>
+                <h4>Usage</h4>
+                <ol>
+                  <li>
+                  <div>
+                      <h8>Connect Keplr, and create/import a wallet</h8>
+                      <br/>
+                      <span>- If you connected Keplr to your own LocalSecret (secretdev-1) previously, remove that connection first. (Open Keplr and click X on the network dropdown)</span>
+                      <br/>
+                      <span>- Now head over to <a href="/keplr">Keplr</a> to configure it with this network's endpoints </span>
+                    </div>
+                  </li>
+                  <li>
+                  <span>Get some tokens from the <a href="/faucet">Faucet</a></span>
+                  </li>
+                  <li>
+                  <span>Configure <a href="/secretcli">Secret CLI</a> to use this RPC</span>
+                  </li>
+                  <li>
+                  <span>Explore the blockchain events with <a href={EXPLORER_URL}>PingPub</a></span>
+                  </li>
+                  <li>
+                  <span>Enjoy customizable privacy!</span>
+                  </li>
+                </ol>
+                </section>
             
             </Card.Body>
             <Card.Footer>
@@ -34,7 +63,7 @@ export default function Home() {
                 </Link>
               </Row>
 
-              <Row justify="right">
+              <Row justify="left">
                 <Link
                   icon
                   color="primary"

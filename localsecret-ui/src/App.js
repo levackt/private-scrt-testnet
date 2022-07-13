@@ -20,11 +20,11 @@ function App() {
             <Route path="/" element={<Home />}>
               Home
             </Route>
-            <Route path="/faucet" element={<Faucet />}>
-              Faucet
-            </Route>
             <Route path="/keplr" element={<KeplrConnect />}>
               Connect Keplr
+            </Route>
+            <Route path="/faucet" element={<Faucet />}>
+              Faucet
             </Route>
             <Route path="/secretcli" element={<SecretCli />}>
               SecretCli
