@@ -6,8 +6,8 @@ function Navbar() {
   return (
     <div className="Navbar">
       <Link href="/">Home</Link>
-      <Link href="/faucet">Faucet</Link>
       <Link href="/keplr">Keplr Connect</Link>
+      <Link href="/faucet">Faucet</Link>
       <Link href="/secretcli">Secret CLI config</Link>
       <Link
         icon
