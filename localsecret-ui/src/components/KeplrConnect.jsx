@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Container, Card, Button, Row } from "@nextui-org/react";
 import { SecretNetworkClient } from "secretjs";
+import { GRPCWEB_URL, CHAIN_ID, CHAIN_NAME, RPC_URL, LCD_URL, MINIMAL_DENOM, DENOM } from "../constants/constants";
+import { Loading } from '@nextui-org/react';
 
 export default function KeplrConnect() {
   const [myAddress, setMyAddress] = useState("");
   const [myBalance, setMyBalance] = useState("");
   const [keplrEnabled, setKeplrEnabled] = useState(false);
-
-  const grpcWebUrl = "https://grpcweb.scrttestnet.com";
-  const CHAIN_ID = "secretdev-1";
 
   //listen for account changes
   window.addEventListener("keplr_keystorechange", async () => {
@@ -23,7 +22,7 @@ export default function KeplrConnect() {
           await window.keplr.enable(CHAIN_ID);
           setKeplrEnabled(true);
         } catch (err) {
-          console.error(`failed to enable chain-id: ${CHAIN_ID}`, err);
+          console.warn(`failed to enable chain-id: ${CHAIN_ID}`, err);
           setKeplrEnabled(false);
           return;
         }
@@ -42,7 +41,7 @@ export default function KeplrConnect() {
     setMyAddress(myAddress);
 
     const secretjs = await SecretNetworkClient.create({
-      grpcWebUrl,
+      grpcWebUrl: GRPCWEB_URL,
       chainId: CHAIN_ID,
       wallet: keplrOfflineSigner,
       walletAddress: myAddress,
@@ -52,31 +51,29 @@ export default function KeplrConnect() {
       balance: { amount },
     } = await secretjs.query.bank.balance({
       address: myAddress,
-      denom: "uscrt",
+      denom: MINIMAL_DENOM,
     });
-    setMyBalance(amount);
+    setMyBalance(`${amount / 1e6} ${DENOM}`);
   }
 
   async function handleConnect() {
 
-    // todo endpoints from config
-    const rpcUrl = "https://rpc.scrttestnet.com";
-    const lcdUrl = "https://lcd.scrttestnet.com";
-    const CHAIN_ID = "secretdev-1"; //todo chain id from env
-    const chainName = "Local Secret Testnet"; // todo chain name from env
+    console.log(`connecting to chain-id:${CHAIN_ID}, 
+    CHAIN_NAME=${CHAIN_NAME}, RPC_URL=${RPC_URL}, LCD_URL=${LCD_URL}, DENOM=${DENOM}, 
+    MINIMAL_DENOM=${MINIMAL_DENOM}`);
 
     await window.keplr.experimentalSuggestChain({
       chainId: CHAIN_ID,
-      chainName: chainName,
-      rpc: rpcUrl,
-      rest: lcdUrl,
+      chainName: CHAIN_NAME,
+      rpc: RPC_URL,
+      rest: LCD_URL,
       bip44: {
         coinType: 529,
       },
       coinType: 529,
       stakeCurrency: {
-        coinDenom: "SCRT",
-        coinMinimalDenom: "uscrt",
+        coinDenom: DENOM,
+        coinMinimalDenom: MINIMAL_DENOM,
         coinDecimals: 6,
       },
       bech32Config: {
@@ -89,15 +86,15 @@ export default function KeplrConnect() {
       },
       currencies: [
         {
-          coinDenom: "SCRT",
-          coinMinimalDenom: "uscrt",
+          coinDenom: DENOM,
+          coinMinimalDenom: MINIMAL_DENOM,
           coinDecimals: 6,
         },
       ],
       feeCurrencies: [
         {
-          coinDenom: "SCRT",
-          coinMinimalDenom: "uscrt",
+          coinDenom: DENOM,
+          coinMinimalDenom: MINIMAL_DENOM,
           coinDecimals: 6,
         },
       ],
@@ -125,12 +122,14 @@ export default function KeplrConnect() {
       )}
       {keplrEnabled && (
         <Card className="keplrCard">
-          <p>
-            <strong>My Address:</strong> {myAddress}
-          </p>
-          <p>
-            <strong>My Balance:</strong> {myBalance}
-          </p>
+          <div>
+            <p>
+              <strong>My Address:</strong> {myAddress}
+            </p>
+          
+            {myBalance ? <div><p><strong>My Balance: {myBalance}</strong></p></div> : <Loading/>}
+
+            </div>
         </Card>
       )}
     </Container>

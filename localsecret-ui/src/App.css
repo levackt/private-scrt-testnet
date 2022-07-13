@@ -206,7 +206,7 @@ a:hover {
   --danger: #ff1a1a;
   --danger-bc: #d10000;
 }
-.faucet, .keplr {
+.faucet, .keplr, .secretCli {
   max-width: 40rem;
   width: 100%;
   margin: 0 auto;
@@ -242,7 +242,7 @@ a:hover {
     margin: 1rem;
   }
 }
-.faucetCard, .keplrCard {
+.faucetCard, .keplrCard, .secretCliCard {
   margin-bottom: 30px;
   background: #9094c9;
 }
