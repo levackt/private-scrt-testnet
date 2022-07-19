@@ -42,7 +42,17 @@ export default function Faucet() {
 
   return (
     <Container className="faucet">
-        <Text color="white">Use this faucet to get tokens for your private testnet</Text>
+
+        <Text 
+          h4
+          css={{
+            textGradient: "45deg, $blue600 -20%, $pink500 50%",
+          }}
+          weight="bold"
+        >
+          Use this faucet to get tokens for your private testnet
+        </Text>
+
         <Card className="faucetCard">
             
             <form onSubmit={handleSubmit(onSubmit)}>

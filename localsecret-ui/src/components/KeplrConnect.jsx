@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Card, Button, Row } from "@nextui-org/react";
+import { Container, Card, Button, Row, Text } from "@nextui-org/react";
 import { SecretNetworkClient } from "secretjs";
 import { GRPCWEB_URL, CHAIN_ID, CHAIN_NAME, RPC_URL, LCD_URL, MINIMAL_DENOM, DENOM } from "../constants/constants";
 import { Loading } from '@nextui-org/react';
@@ -122,6 +122,17 @@ export default function KeplrConnect() {
       )}
       {keplrEnabled && (
         <Card className="keplrCard">
+
+
+        <Text 
+          h4
+          css={{
+            textGradient: "45deg, $blue600 -20%, $pink300 50%",
+          }}
+          weight="bold"
+        >
+          Keplr
+        </Text>
           <div>
             <p>
               <strong>My Address:</strong> {myAddress}

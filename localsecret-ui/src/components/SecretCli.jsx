@@ -18,7 +18,7 @@ export default function SecretCli() {
         },
         "id": "115aa0a629f5d70dd1d464bc7e42799e00f4edae",
         "listen_addr": "tcp://0.0.0.0:26656",
-        "network": "secretdev-1",
+        "network": "my-secret-testnet",
         "version": "0.34.19",
         "channels": "40202122233038606100",
         "moniker": "banana",
@@ -53,7 +53,14 @@ export default function SecretCli() {
         <Card className="secretCliCard">
             <Card.Body>
             <Row justify="left">
-              <Text>
+
+              <Text 
+                h4
+                css={{
+                  textGradient: "45deg, $blue600 -20%, $pink300 50%",
+                }}
+                weight="bold"
+              >
                 Configure secretcli to use this testnet
               </Text>
             </Row>

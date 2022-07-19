@@ -7,9 +7,15 @@ export default function Home() {
         <Card>
             <Card.Body>
             <Row justify="left">
-              <Text>
-                LocalSecret is a complete Secret Network testnet and ecosystem containerized with Docker. 
-              </Text>
+                  <Text 
+                    h4
+                    css={{
+                      textGradient: "45deg, $blue600 -20%, $pink500 50%",
+                    }}
+                    weight="bold"
+                  >
+                    LocalSecret is a complete Secret Network testnet and ecosystem containerized with Docker. 
+                  </Text>
             </Row>
             <Row justify="left" align="left">
                 It simplifies the way secret contract developers test their contracts in a sandbox before they deploy them on a testnet or mainnet.
@@ -27,16 +33,16 @@ export default function Home() {
                 <h4>Usage</h4>
                 <ol>
                   <li>
-                      <span>Connect <a href="/keplr">Keplr</a> Keplr, and create/import a wallet</span>
+                      <span>Connect <Link href="/keplr">Keplr</Link>, and create/import a wallet</span>
                   </li>
                   <li>
-                  <span>Get some tokens from the <a href="/faucet">Faucet</a></span>
+                  <span>Get some tokens from the <Link href="/faucet">Faucet</Link></span>
                   </li>
                   <li>
-                  <span>Configure <a href="/secretcli">Secret CLI</a> to use this RPC</span>
+                  <span>Configure <Link href="/secretcli">Secret CLI</Link> to use this RPC</span>
                   </li>
                   <li>
-                  <span>Explore the blockchain events with <a href={EXPLORER_URL}>PingPub</a></span>
+                  <span>Explore the blockchain events with <Link href={EXPLORER_URL}>PingPub</Link></span>
                   </li>
                   <li>
                   <span>Enjoy customizable privacy!</span>
