@@ -27,13 +27,7 @@ export default function Home() {
                 <h4>Usage</h4>
                 <ol>
                   <li>
-                  <div>
-                      <h8>Connect Keplr, and create/import a wallet</h8>
-                      <br/>
-                      <span>- If you connected Keplr to your own LocalSecret (secretdev-1) previously, remove that connection first. (Open Keplr and click X on the network dropdown)</span>
-                      <br/>
-                      <span>- Now head over to <a href="/keplr">Keplr</a> to configure it with this network's endpoints </span>
-                    </div>
+                      <span>Connect <a href="/keplr">Keplr</a> Keplr, and create/import a wallet</span>
                   </li>
                   <li>
                   <span>Get some tokens from the <a href="/faucet">Faucet</a></span>

@@ -30,7 +30,7 @@ services:
       - '1317:1317'
       - '5000:5000'
     environment:
-      - TZ=`ls -la /etc/localtime | cut -d/ -f8-9
+      CHAINID: my-secret-testnet
     restart: on-failure
     volumes:
       - scrttestnet:/root/.secretd/
@@ -49,8 +49,6 @@ services:
     image: taariq/pingpub-explorer
     ports:
       - '80'
-    environment:
-      - TZ=`ls -la /etc/localtime | cut -d/ -f8-9
     restart: on-failure
 
   certbot:
