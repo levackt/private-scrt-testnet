@@ -3,6 +3,7 @@ import "./App.css";
 import { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import { Loading } from '@nextui-org/react';
 
 const Faucet = lazy(() => import("./components/Faucet"));
 const Home = lazy(() => import("./components/Home"));
@@ -33,7 +34,7 @@ function App() {
         </Grid>
         <Grid xs={9}>
           <Router>
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Loading/>}>
               <Routes>
                 <Route path="/" element={<Home />}>
                   Home
